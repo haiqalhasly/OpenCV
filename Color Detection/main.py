@@ -4,7 +4,7 @@ from PIL import Image
 from util import get_limits
 
 
-blue = [255, 0, 0] # in BGR 
+red = [0, 0, 255] # in BGR 
 cap = cv2.VideoCapture(0) #to open the webcam in your computer. 0 means 1 cam, 1 = 2 cam, etc.  
 
 while True:
@@ -16,7 +16,7 @@ while True:
     hsvImage = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
     #determine upper limit and lower limit of our color. In this case, its blue
-    lowerLimit, upperLimit = get_limits(color = blue)
+    lowerLimit, upperLimit = get_limits(color = red)
 
     #this is mask where it job is to make the color we detect into white and everything else is black. We use it to simplify (bbox)boundaryBox application.
     mask = cv2.inRange(hsvImage, lowerLimit, upperLimit)
